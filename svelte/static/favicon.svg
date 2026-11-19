@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#1f9d63" />
+			<stop offset="1" stop-color="#0b4f31" />
+		</linearGradient>
+		<mask id="moon">
+			<rect width="64" height="64" fill="#000000" />
+			<circle cx="30" cy="34" r="15" fill="#ffffff" />
+			<circle cx="38.5" cy="28.5" r="13.5" fill="#000000" />
+		</mask>
+	</defs>
+	<rect width="64" height="64" fill="url(#bg)" />
+	<rect width="64" height="64" fill="#ffffff" mask="url(#moon)" />
+	<path d="M41 21.5l1.1 2.9 2.9 1.1-2.9 1.1-1.1 2.9-1.1-2.9-2.9-1.1 2.9-1.1z" fill="#f2c14e" />
+</svg>
