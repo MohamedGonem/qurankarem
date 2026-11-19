@@ -3,6 +3,7 @@ import xml from './quran-uthmani.xml?raw';
 export type Verse = {
   index: number;
   text: string;
+  bismillah?: string;
 };
 
 // The Tanzil file has a fixed shape:
@@ -10,7 +11,8 @@ export type Verse = {
 // Parsing it once at module load keeps this off the client and avoids a
 // 1.5 MB fetch on every surah page.
 const SURA_PATTERN = /<sura index="(\d+)"[^>]*>([\s\S]*?)<\/sura>/g;
-const AYA_PATTERN = /<aya index="(\d+)" text="([^"]*)"[^>]*\/>/g;
+const AYA_PATTERN =
+  /<aya index="(\d+)" text="([^"]*)"(?: bismillah="([^"]*)")?[^>]*\/>/g;
 
 function decodeEntities(text: string): string {
   return text
@@ -30,7 +32,8 @@ for (const suraMatch of xml.matchAll(SURA_PATTERN)) {
   for (const ayaMatch of suraMatch[2].matchAll(AYA_PATTERN)) {
     verses.push({
       index: Number(ayaMatch[1]),
-      text: decodeEntities(ayaMatch[2])
+      text: decodeEntities(ayaMatch[2]),
+      bismillah: ayaMatch[3] ? decodeEntities(ayaMatch[3]) : undefined
     });
   }
 
