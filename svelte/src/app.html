@@ -1,12 +1,17 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="text-scale" content="scale" />
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="utf-8">
+        <title>القرآن الكريم</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
+    <footer class="text-center text-muted p-3">
+        &copy; <span id="year"></span> القرآن الكريم بصوت الشيخ <span id="reciter-footer">...</span>
+    </footer>
 </html>
