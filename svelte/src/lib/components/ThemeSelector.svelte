@@ -1,12 +1,19 @@
 <script lang="ts">
+  import { app } from "#lib/state/app.svelte.js";
+
+  type Theme = {
+    name: string;
+    value: string;
+  };
+
   type ThemeCategory = {
     category: string;
     themes: Theme[];
   };
 
-  type Theme = {
-    name: string;
-    value: string;
+  const neutral: ThemeCategory = {
+    category: "الافتراضي",
+    themes: [{ name: "فاتح", value: "light" }],
   };
 
   const green: ThemeCategory = {
@@ -51,12 +58,17 @@
     ],
   };
 
-  const themes: ThemeCategory[] = [green, red, blue, eye_friendly];
+  const themes: ThemeCategory[] = [neutral, green, red, blue, eye_friendly];
 </script>
 
 <div class="mb-3">
   <label for="themeSelect" class="form-label">اختر الثيم:</label>
-  <select id="themeSelect" class="form-select">
+  <select
+    id="themeSelect"
+    class="form-select"
+    value={app.theme}
+    onchange={(event) => app.setTheme(event.currentTarget.value)}
+  >
     {#each themes as themeCategory (themeCategory.category)}
       <optgroup label={themeCategory.category}>
         {#each themeCategory.themes as theme (theme.name)}

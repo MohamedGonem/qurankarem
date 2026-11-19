@@ -1,9 +1,15 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import favicon from "#lib/assets/favicon.svg";
+  import { app } from "#lib/state/app.svelte.js";
   import type { LayoutProps } from "./$types";
   import "../app.css";
 
   let { children }: LayoutProps = $props();
+
+  onMount(() => {
+    app.init();
+  });
 </script>
 
 <svelte:head>
@@ -12,7 +18,7 @@
 
 <div class="app-shell">
   <header class="text-center p-3">
-    <h1>القرآن الكريم بصوت الشيخ <span>...</span></h1>
+    <h1>القرآن الكريم بصوت الشيخ <span>{app.reciterName}</span></h1>
   </header>
 
   <main class="container my-4">
@@ -20,7 +26,8 @@
   </main>
 
   <footer class="text-center text-muted p-3">
-    &copy; {new Date().getFullYear()} القرآن الكريم بصوت الشيخ <span>...</span>
+    &copy; {new Date().getFullYear()} القرآن الكريم بصوت الشيخ
+    <span>{app.reciterName}</span>
   </footer>
 </div>
 

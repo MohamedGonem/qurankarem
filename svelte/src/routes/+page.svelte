@@ -2,12 +2,11 @@
   import { resolve } from "$app/paths";
   import type { PageProps } from "./$types";
   import ThemeSelector from "#lib/components/ThemeSelector.svelte";
+  import { app } from "#lib/state/app.svelte.js";
 
   let { data }: PageProps = $props();
 
   let query = $state("");
-
-  let selectedReciterName = $state(data.reciters[0]?.reciter ?? "");
 
   const reciterNames = $derived([
     ...new Set(data.reciters.map((reciter) => reciter.reciter)),
@@ -26,7 +25,8 @@
     <select
       id="reciterSelect"
       class="form-select"
-      bind:value={selectedReciterName}
+      value={app.reciterName}
+      onchange={(event) => app.setReciterByName(event.currentTarget.value)}
     >
       {#each reciterNames as name (name)}
         <option value={name}>{name}</option>
