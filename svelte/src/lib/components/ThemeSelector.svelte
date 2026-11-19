@@ -61,11 +61,11 @@
   const themes: ThemeCategory[] = [neutral, green, red, blue, eye_friendly];
 </script>
 
-<div class="mb-3">
-  <label for="themeSelect" class="form-label">اختر الثيم:</label>
+<div class="field">
+  <label for="themeSelect" class="field-label">اختر الثيم</label>
   <select
     id="themeSelect"
-    class="form-select"
+    class="select"
     value={app.theme}
     onchange={(event) => app.setTheme(event.currentTarget.value)}
   >

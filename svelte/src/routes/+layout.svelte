@@ -16,34 +16,26 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
+<a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
+
 <div class="app-shell">
-  <header class="text-center p-3">
-    <h1>القرآن الكريم بصوت الشيخ <span>{app.reciterName}</span></h1>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <h1 class="site-header__title">القرآن الكريم</h1>
+      <p class="site-header__subtitle">
+        بصوت الشيخ
+        <span class="site-header__reciter">{app.reciterName || "..."}</span>
+      </p>
+    </div>
   </header>
 
-  <main class="container my-4">
+  <main id="main-content" class="site-main">
     {@render children()}
   </main>
 
-  <footer class="text-center text-muted p-3">
-    &copy; {new Date().getFullYear()} القرآن الكريم بصوت الشيخ
-    <span>{app.reciterName}</span>
+  <footer class="site-footer">
+    <p class="site-footer__signature">
+      &copy; {new Date().getFullYear()} من مسلم لمسلم
+    </p>
   </footer>
 </div>
-
-<style>
-  .app-shell {
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .app-shell > main {
-    flex: 1 0 auto;
-  }
-
-  .app-shell > footer {
-    flex-shrink: 0;
-  }
-</style>
