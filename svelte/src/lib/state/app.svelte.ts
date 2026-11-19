@@ -25,6 +25,12 @@ class AppState {
     return this.reciter?.reciter ?? '';
   }
 
+  get riwayat(): Reciter[] {
+    return recitersData.reciters.filter(
+      (reciter) => reciter.reciter === this.reciterName
+    );
+  }
+
   init() {
     if (!browser || this.initialized) return;
 
